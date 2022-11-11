@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import EventList from "./components/EventList";
+
+const events = [
+  {
+    title: "Summer Concert",
+    image: "https://picsum.photos/200",
+    date: "7/1/2023",
+    location: "NYC",
+  },
+  {
+    title: "New Concert",
+    image: "https://picsum.photos/200",
+    date: "7/1/2023",
+    location: "NYC",
+  },
+  {
+    title: "Fun Concert",
+    image: "https://picsum.photos/200",
+    date: "7/1/2023",
+    location: "NYC",
+  },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <EventList
+        list={events}
+        onEventClick={(event) => {
+          console.log(event);
+        }}
+      />
     </div>
   );
 }
