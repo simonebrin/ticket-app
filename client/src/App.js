@@ -1,3 +1,4 @@
+import EventForm from "./components/EventForm";
 import EventList from "./components/EventList";
 
 const events = [
@@ -24,12 +25,13 @@ const events = [
 function App() {
   return (
     <div>
-      <EventList
+      {/* <EventList
         list={events}
         onEventClick={(event) => {
           console.log(event);
         }}
-      />
+      /> */}
+      <EventForm onSubmit={(data) => {console.log(data)} } />
     </div>
   );
 }
