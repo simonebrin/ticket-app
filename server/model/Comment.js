@@ -1,43 +1,23 @@
-const { Model, DataTypes } = require('sequelize');
+const { Schema, model } = require("mongoose");
+const Comment = model("Comment", commentSchema);
 
-
-class Comment extends Model {}
-
-Comment.init(
+const commentSchema = new Schema(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
     comment_text: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      type: String,
+      required: "Show us what you think!",
+      minlength: 1,
+      maxlength: 280,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
+    username: {
+      type: String,
+      required: true,
     },
-    post_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'post',
-        key: 'id'
-      }
-    }
   },
   {
-    sequelize,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'comment'
+    toJSON: {
+      getters: true,
+    },
   }
 );
 

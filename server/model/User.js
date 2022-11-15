@@ -1,73 +1,62 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const User = model("User", userSchema);
 
 // create our User model
-class User extends Model {
-  // set up method to run on instance data (per user) to check password
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
-}
-
-// create fields/columns for User model
-User.init(
+const userSchema = new Schema(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
     username: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
     },
     email: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: String,
+      required: true,
       unique: true,
-      validate: {
-        isEmail: true
-      }
+      match: [/.+@.+\..+/, "Please provide a valid email address"],
     },
     password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [4]
-      }
-    }
+      type: String,
+      required: true,
+      minlength: 5,
+    },
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
-    hooks: {
-      // set up beforeCreate lifecycle "hook" functionality
-      async beforeCreate(newUserData) {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
-      },
-
-      async beforeUpdate(updatedUserData) {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData;
-      }
+    toJSON: {
+      virtuals: true,
     },
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'user'
   }
 );
 
-// hash user password
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+// set up pre-save middleware to create password
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
 
   next();
 });
+
+// compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
+
 
 module.exports = User;
