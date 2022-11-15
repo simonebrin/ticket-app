@@ -1,7 +1,10 @@
 import EventForm from "./components/EventForm";
 import EventList from "./components/EventList";
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AddEvent from "./pages/AddEvent";
+import ViewEvents from "./pages/ViewEvents";
+import Nav from "./components/Nav";
 
 const events = [
   {
@@ -26,15 +29,13 @@ const events = [
 
 function App() {
   return (
-    <div>
-      {/* <EventList
-        list={events}
-        onEventClick={(event) => {
-          console.log(event);
-        }}
-      /> */}
-      <EventForm onSubmit={(data) => {console.log(data)} } />
-    </div>
+    <Router>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<ViewEvents list={events} />} />
+        <Route path="/add" element={<AddEvent />} />
+      </Routes>
+    </Router>
   );
 }
 
