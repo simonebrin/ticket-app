@@ -25,7 +25,7 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    comments(username: String): [Comment]
+    comments: [Comment]
     comment(_id: ID!): Comment
   }
 

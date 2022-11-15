@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Comment } = require("../models");
+const { User, Comment } = require("../model");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -8,20 +8,25 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select("-__v -password")
-          .populate("comments")
+          .populate("comments");
 
-          return userData
+        return userData;
       }
       throw new AuthenticationError("Not logged in");
     },
     users: async () => {
-      return User.find()
+      return User.find().select("-__v -password").populate("comments");
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
         .select("-__v -password")
-        .populate("comments")
-  },
-    comment:async (parent, { _id }) => {
+    },
+    comment: async (parent, { _id }) => {
       return Comment.findOne({ _id });
     },
+    comments: async () => {
+      return Comment.find().select("-__v")
+    }
   },
 
   Mutation: {
@@ -62,7 +67,9 @@ const resolvers = {
         return comment;
       }
 
-      throw new AuthenticationError("You need to be logged in to view this information");
+      throw new AuthenticationError(
+        "You need to be logged in to view this information"
+      );
     },
   },
 };

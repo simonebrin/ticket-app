@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const User = model("User", userSchema);
+
 
 // create our User model
 const userSchema = new Schema(
@@ -22,16 +22,10 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
-    thoughts: [
+    comments: [
       {
         type: Schema.Types.ObjectId,
         ref: "Comment",
-      },
-    ],
-    friends: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
       },
     ],
   },
@@ -57,6 +51,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-
+const User = model("User", userSchema);
 
 module.exports = User;
