@@ -7,6 +7,8 @@
     "start": "cd server && npm start",
     "dev:server": "cd server && npm run dev",
     "dev:client": "cd client && npm start",
+    "develop": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
+    "build": "cd client && npm run build",
     "install": "cd client && npm install && cd ../server && npm install"
   },
   "repository": {
@@ -19,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/simonebrin/ticket-app/issues"
   },
-  "homepage": "https://github.com/simonebrin/ticket-app#readme"
+  "homepage": "https://github.com/simonebrin/ticket-app#readme",
+  "dependencies": {
+    "concurrently": "^7.5.0"
+  }
 }

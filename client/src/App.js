@@ -34,6 +34,7 @@ const events = [
 
 function App() {
   return (
+
     <Router>
       <Header/>
       <Routes>
@@ -42,6 +43,7 @@ function App() {
       </Routes>
       <Footer/>
     </Router>
+
   );
 }
 
