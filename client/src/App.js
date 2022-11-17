@@ -27,13 +27,21 @@ const events = [
 function App() {
   return (
     <div>
-      {/* <EventList
-        list={events}
-        onEventClick={(event) => {
-          console.log(event);
-        }}
-      /> */}
-      <EventForm onSubmit={(data) => {console.log(data)} } />
+      <div>
+        <EventList
+          list={events}
+          onEventClick={() => {
+            console.log(events);
+          }}
+        />
+      </div>
+      <div>
+        <EventForm
+          onSubmit={(data) => {
+            console.log(data);
+          }}
+        />
+      </div>
     </div>
   );
 }
