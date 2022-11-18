@@ -3,7 +3,7 @@
 ## TABLE OF CONTENTS
   - [DESCRIPTION](#description)
   - [PACKAGES](#packages)
-  - [INSTALLION](#installation)
+  - [INSTALLATION](#installation)
   - [USAGE](#usage)
   - [LICENSE](#license)
   - [CONTRIBUTE](#contribute)
@@ -14,20 +14,16 @@
 ## DESCRIPTION
 
         
-- "Take Note!" is an interactive, simple to use note taking application that separates your notes into its individual sections from personal to work/business related notes.
-
+- Ticket manager allows for users to find and book tickets for their favorite events 
 
 ## PACKAGES
 
 
 - npm inquier, express, MySQL, Handlebars and the additional package of:
     
-    - uuid - allows task deletion.
-    
-    - passport - allows session saving on log in.
 
 
-## INSTALATION
+## INSTALLATION
 
       
 - To install the packages correctly you use "npm i" which will download the required packages.
@@ -40,7 +36,7 @@
 
   - The React.js framework is an open-source JavaScript framework and library developed by Facebook. It’s used for building interactive user interfaces and web applications quickly and efficiently with significantly less code than you would with vanilla JavaScript.
     
-      - https://www.npmjs.com/package/passport
+      -https://reactjs.org/docs/create-a-new-react-app.html
 
 - Express :
 
@@ -48,27 +44,27 @@
   
       - https://www.npmjs.com/package/express
     
-- Handlebars :
+- Node :
 
-    -  is a simple templating language and uses a template and an input object to generate HTML or other text formats.  
+    -  As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications. In the following "hello world" example, many connections can be handled concurrently. Upon each connection, the callback is fired, but if there is no work to be done, Node.js will sleep.
   
-      - https://www.npmjs.com/package/handlebars
+      - https://www.npmjs.com/package/handlebars(https://nodejs.org/en/download/
    
-- MySQL :
 
-    - is used to crwate databases that are reconized by js to display data.  
-  
-      - https://www.mysql.com/  
-    
-    
-    
-
+   
 - Heroku :
 
   - Heroku is a way for us to deploy and use our apps all on the cloud in comparision to heroku which only allows us to test on our local machine. the download link for this is loacted at: 
     
     - https://devcenter.heroku.com/articles/heroku-cli
+ 
 
+- MongoDB :
+
+  - MongoDB is a document database with the scalability and flexibility that allows users to query and index efficiently : 
+    
+    - https://www.mongodb.com/docs/manual/installation
+ 
 
 
 ## CONTRIBUTE
@@ -86,12 +82,12 @@
       
 - To run the project just CLONE the code from the following github link:
 
-   - https://github.com/boddiegoat7/final-project-2
+   - https://github.com/simonebrin/ticket-app
 
-   and opening in vs code. Use the "node server" to start the server and to be able to get routes using insomnia.
+  
+-The link of the deployed application:
 
--Also clicking the link below will alow u to vist the heroku ink for the project:
-
+https://ticket3cb.herokuapp.com/
     
 ## QUESTIONS
 
@@ -105,16 +101,15 @@ Please message us if you have any question about the project at:
 - GitHub: [simonebrin](https://github.com/simonebrin)
     
 
-- Email: [enoch10evelyn@gmail.com](mailto:enoch10evelyn@gmail.com})
+- Email: [em.smolka@gmail.com](mailto:em.smolka@gmail.com)
 
 - Email: [enoch10evelyn@gmail.com](mailto:enoch10evelyn@gmail.com})
 
-- Email: [enoch10evelyn@gmail.com](mailto:enoch10evelyn@gmail.com})
+- Email: [simonebrin@gmail.com](mailto:simonebrin@gmail.com})
 
 
-## VIDEO
+## Power Point 
 
-PowerPoint:
 
 https://docs.google.com/presentation/d/1EHuDzXhSzXG75dDmJfmgI8nlFEgYQgQbjSI-NpZA7j0/edit#slide=id.p
 
