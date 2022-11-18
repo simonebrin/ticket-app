@@ -1,5 +1,4 @@
-# Project 2 Take Note!
-
+# Ticket Manager 
 
 ## TABLE OF CONTENTS
   - [DESCRIPTION](#description)
